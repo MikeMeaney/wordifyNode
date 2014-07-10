@@ -61,4 +61,4 @@ http.createServer(function(req, res) {
         });
 
     })
-}).listen(server_port, server_ip_address);
+}).listen(8080, ''127.0.0.1);
