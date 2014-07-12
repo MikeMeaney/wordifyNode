@@ -1,6 +1,6 @@
 var request = require("request");
 var http = require("http");
-var randomWordURL = 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=false&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
+var randomWordURL = 'http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
 
 var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
 var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
@@ -19,7 +19,7 @@ http.createServer(function(req, res) {
         theWord=theWord.word;
         console.log(theWord);
 
-        var wordDefURL = 'http://api.wordnik.com:80/v4/word.json/' + theWord + '/definitions?limit=1&includeRelated=false&sourceDictionaries=all&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
+        var wordDefURL = 'http://api.wordnik.com:80/v4/word.json/' + theWord + '/definitions?limit=1&includeRelated=true&sourceDictionaries=all&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
         //Get the definition
         request(wordDefURL, function (error, response, body) {
             res.writeHead(200, {'Content-Type': 'text/plain', "Access-Control-Allow-Origin": '*'});
