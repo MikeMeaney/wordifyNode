@@ -17,7 +17,7 @@ http.createServer(function(req, res) {
         theWord = body;
         theWord=JSON.parse(theWord);
         theWord=theWord.word;
-        console.log(theWord);
+        console.log(theWord + " Requested by: " + req.connection.remoteAddress);
 
         var wordDefURL = 'http://api.wordnik.com:80/v4/word.json/' + theWord + '/definitions?limit=1&includeRelated=true&sourceDictionaries=all&useCanonical=true&includeTags=false&api_key=a2a73e7b926c924fad7001ca3111acd55af2ffabf50eb4ae5';
         //Get the definition
